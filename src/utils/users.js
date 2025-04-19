@@ -32,7 +32,13 @@ const addUser = ({ id, username, room }) => {
 }
 
 // remove user
-const removeUser = id => users.filter(user => user.id === id)[0]
+const removeUser = id => {
+  const index = users.findIndex(user => user.id === id)
+
+  if (index !== -1) {
+    return users.splice(index, 1)[0]
+  }
+}
 
 // get user
 const getUser = id => users.find(user => user.id === id)
